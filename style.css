@@ -1,13 +1,32 @@
 h1{
     text-align: center;
     margin-top: 100px;
+    color: rgb(216, 25, 25);
+    font-size: 100px;
+    text-shadow: 5px 5px 10px black;
 }
 
 #pacman{
     display: grid;
+    grid-template-columns: repeat(19,40px);
+    grid-template-rows: repeat(22,40px);
     margin: auto;
-    background-color: black;
-    width: 800px;
-    height: 600px;
+    width: fit-content;
+    box-shadow: 10px 10px 20px black;
 }
 
+.mur{
+    background-image: url(/image/mur.gif);
+}
+
+.sol{
+    background-image: url(/image/sol.gif);
+}
+
+.bonbon{
+    background-image: url(/image/bonbon.gif);
+}
+
+.mangeur{
+    background-image: url(/image/pacman4.gif);
+}
