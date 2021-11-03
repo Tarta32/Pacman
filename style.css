@@ -6,6 +6,18 @@ h1{
     text-shadow: 5px 5px 10px black;
 }
 
+img{
+    width: 100%;
+}
+
+body{
+    display: flex;
+    background-image: url(/juegos_pacman-stories.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 #pacman{
     display: grid;
     grid-template-columns: repeat(19,40px);
@@ -13,6 +25,7 @@ h1{
     margin: auto;
     width: fit-content;
     box-shadow: 10px 10px 20px black;
+    margin-bottom: 41px;
 }
 
 .mur{
@@ -29,4 +42,23 @@ h1{
 
 .mangeur{
     background-image: url(/image/pacman4.gif);
+}
+
+.fantome{
+    background-image: url(/image/fantome0.gif);
+}
+
+.score{
+    margin: auto;
+    width: 200px;
+    padding: 30px;
+    border: 10px solid rgb(255, 0, 0);
+    color: red;
+    font-size: 40px;
+    text-align: center;
+    background-color: rgb(142, 177, 125);
+}
+
+.pacman{
+    width: 800px;
 }
