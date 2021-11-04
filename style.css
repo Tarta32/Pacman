@@ -44,21 +44,62 @@ body{
     background-image: url(/image/pacman4.gif);
 }
 
-.fantome{
+.fantome0{
     background-image: url(/image/fantome0.gif);
+}
+
+.fantome1{
+    background-image: url(/image/fantome1.gif);
+}
+
+.fantome2{
+    background-image: url(/image/fantome2.gif);
+}
+
+.fantome3{
+    background-image: url(/image/fantome3.gif);
 }
 
 .score{
     margin: auto;
     width: 200px;
-    padding: 30px;
-    border: 10px solid rgb(255, 0, 0);
-    color: red;
-    font-size: 40px;
+    padding: 20px;
+    color: black;
+    font-size: 100px;
+    background-color: rgb(212, 42, 212);
     text-align: center;
-    background-color: rgb(142, 177, 125);
+    font-family: "pacman";
+}
+#nb_fantome{
+    margin: 50px auto;
+    width: 100px;
+    padding: 20px;
+    color: black;
+    font-size: 20px;
+    background-color: rgb(177, 155, 177);
+    text-align: center;
+    font-family: "pacman";
+}
+.rejouer{
+    margin: 50px auto;
+    width: 100px;
+    padding: 20px;
+    color: black;
+    font-size: 20px;
+    background-color: rgb(177, 155, 177);
+    text-align: center;
+    font-family: "pacman";
+}
+
+.rejouer:hover{
+    cursor: pointer;
 }
 
 .pacman{
     width: 800px;
+}
+
+@font-face {
+    font-family: "pacman";
+    src: url(/crackman.ttf);
 }

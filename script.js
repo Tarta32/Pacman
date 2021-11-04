@@ -28,15 +28,21 @@ let mangeur={
     direction:0
 }
 
-let fantome={
+let tableFantome=[{
     x:10,
     y:11,
     direction:3
-}
+}]
+
 
 let score = 0
 
+let pacman2 = JSON.parse(JSON.stringify(pacman))
+let tableFantome2 = JSON.parse(JSON.stringify(tableFantome))
+
 document.body.addEventListener("keyup", changeDirection)
+document.querySelector(".rejouer").addEventListener("click",rejouer)
+document.querySelector("#nb_fantome").addEventListener("click",nb_fantome)
 
 let interval = setInterval(tourDeJeu,400)
 
@@ -85,12 +91,32 @@ function afficheMangeur(){
 
 }
 
-function afficheFantome(){
+function nb_fantome(){
+    let nb = document.querySelector(".nb_fantome").value
+    tableFantome=[]
+    mangeur.x = 6
+    mangeur.y = 2
+    mangeur.direction = 0
+    pacman = JSON.parse(JSON.stringify(pacman2))
+    score = 0
+
+
+    for (let i = 0 ; i < nb ; i++ ){
+        tableFantome.push({
+            x:10,
+            y:11,
+            direction:3
+        })
+    }
+    
+}
+
+function afficheFantome(num){
     let elem = document.createElement("div")
     document.getElementById("pacman").appendChild(elem)
-    elem.className = "fantome"
-    elem.style.gridColumnStart = fantome.x
-    elem.style.gridRowStart = fantome.y
+    elem.className = "fantome"+(num % 4)
+    elem.style.gridColumnStart = tableFantome[num].x
+    elem.style.gridRowStart = tableFantome[num].y
 }
 
 function deplaceMangeur(){
@@ -109,21 +135,21 @@ function deplaceMangeur(){
     }
 
 }
-function deplaceFantome(){
+function deplaceFantome(num){
 
-    fantome.direction = getRandomInt(4)
-    if(fantome.direction == 0){
-        fantome.x = fantome.x+1
+    tableFantome[num].direction = getRandomInt(4)
+    if(tableFantome[num].direction == 0){
+        tableFantome[num].x = tableFantome[num].x+1
     }
-    else if (fantome.direction == 1){
-        fantome.x = fantome.x-1
+    else if (tableFantome[num].direction == 1){
+        tableFantome[num].x = tableFantome[num].x-1
     }
-    else if(fantome.direction == 2){
-        fantome.y = fantome.y+1
+    else if(tableFantome[num].direction == 2){
+        tableFantome[num].y = tableFantome[num].y+1
     }
 
-    else if(fantome.direction == 3){
-        fantome.y = fantome.y-1
+    else if(tableFantome[num].direction == 3){
+        tableFantome[num].y = tableFantome[num].y-1
     }
 }
 
@@ -162,20 +188,20 @@ function collision(){
     }
 }
 
-function collisionFantome(){
-    if(pacman[fantome.y-1][fantome.x-1] == 0){
-        if (fantome.direction == 0){
-            fantome.x = fantome.x-1
+function collisionFantome(num){
+    if(pacman[tableFantome[num].y-1][tableFantome[num].x-1] == 0){
+        if (tableFantome[num].direction == 0){
+            tableFantome[num].x = tableFantome[num].x-1
        }
-       else if (fantome.direction == 1){
-            fantome.x = fantome.x+1
+       else if (tableFantome[num].direction == 1){
+        tableFantome[num].x = tableFantome[num].x+1
        }
-       else if(fantome.direction == 2){
-            fantome.y = fantome.y-1
+       else if(tableFantome[num].direction == 2){
+        tableFantome[num].y = tableFantome[num].y-1
        }
    
-       else if(fantome.direction == 3){
-            fantome.y = fantome.y+1
+       else if(tableFantome[num].direction == 3){
+        tableFantome[num].y = tableFantome[num].y+1
        }
     }
 }
@@ -184,7 +210,7 @@ function mangerBonbon(){
     if(pacman[mangeur.y-1][mangeur.x-1] == 2){
         pacman[mangeur.y-1][mangeur.x-1] = 1
         score = score+5
-        document.querySelector(".score").innerHTML= score
+        document.querySelector(".score").innerHTML= score*tableFantome.length
         }
 }
 
@@ -203,6 +229,21 @@ function teleport(){
     }
 }
 
+function teleportFantome(num){
+    if (tableFantome[num].x < 1){
+        tableFantome[num].x = 19
+    }
+    if (tableFantome[num].x > 19){
+        tableFantome[num].x = 1
+    }
+    if (tableFantome[num].y < 1){
+        tableFantome[num].y = 22
+    }
+    if (tableFantome[num].y > 22){
+        tableFantome[num].y = 1
+    }
+}
+
 function win(){
     let gagne = true
     for (let i=0; i<22; i++){
@@ -217,16 +258,46 @@ function win(){
         clearInterval(interval)
     }    
 }
+
+function rejouer(){
+    pacman = JSON.parse(JSON.stringify(pacman2))
+    tableFantome = JSON.parse(JSON.stringify(tableFantome2))
+    mangeur.x = 6
+    mangeur.y = 2
+    mangeur.direction = 0
+    score = 0
+    clearInterval(interval)
+    interval = setInterval(tourDeJeu,400);
+}
+
+function loose(num){
+    if (tableFantome[num].x == mangeur.x && tableFantome[num].y == mangeur.y){
+        setTimeout(() => {
+            alert("Perdu")
+        }, 20);
+        
+        clearInterval(interval)
+    }
+
+}
 function tourDeJeu(){
     afficheGrille();
-    deplaceFantome();
-    collisionFantome();
-    afficheFantome();
     deplaceMangeur();
     teleport();
     collision();
     mangerBonbon();
     afficheMangeur();
+    for(i = 0; i < tableFantome.length; i++){
+        loose(i);
+        deplaceFantome(i); 
+        collisionFantome(i);
+        teleportFantome(i);
+        afficheFantome(i);
+        loose(i);
+       
+        
+    }
+    
     setTimeout(win,100);
     
 }
