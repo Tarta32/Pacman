@@ -209,8 +209,8 @@ function collisionFantome(num){
 function mangerBonbon(){
     if(pacman[mangeur.y-1][mangeur.x-1] == 2){
         pacman[mangeur.y-1][mangeur.x-1] = 1
-        score = score+5
-        document.querySelector(".score").innerHTML= score*tableFantome.length
+        score = score + 5*(tableFantome.length)
+        document.querySelector(".score").innerHTML= score
         }
 }
 
@@ -273,7 +273,7 @@ function rejouer(){
 function loose(num){
     if (tableFantome[num].x == mangeur.x && tableFantome[num].y == mangeur.y){
         setTimeout(() => {
-            alert("Perdu")
+            alert("Asta la vista baby !")
         }, 20);
         
         clearInterval(interval)

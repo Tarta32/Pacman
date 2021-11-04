@@ -62,7 +62,7 @@ body{
 
 .score{
     margin: auto;
-    width: 200px;
+    width: 400px;
     padding: 20px;
     color: black;
     font-size: 100px;
@@ -79,6 +79,16 @@ body{
     background-color: rgb(177, 155, 177);
     text-align: center;
     font-family: "pacman";
+}
+
+#nb_fantome:hover{
+    cursor: pointer;
+}
+.nb_fantome{
+    width: 200px;
+    height: 50px;
+    background-color: thistle;
+    text-align: center;
 }
 .rejouer{
     margin: 50px auto;
