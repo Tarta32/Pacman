@@ -12,7 +12,7 @@ img{
 
 body{
     display: flex;
-    background-image: url(/juegos_pacman-stories.jpg);
+    background-image: url(./juegos_pacman-stories.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -29,35 +29,35 @@ body{
 }
 
 .mur{
-    background-image: url(/image/mur.gif);
+    background-image: url(./image/mur.gif);
 }
 
 .sol{
-    background-image: url(/image/sol.gif);
+    background-image: url(./image/sol.gif);
 }
 
 .bonbon{
-    background-image: url(/image/bonbon.gif);
+    background-image: url(./image/bonbon.gif);
 }
 
 .mangeur{
-    background-image: url(/image/pacman4.gif);
+    background-image: url(./image/pacman4.gif);
 }
 
 .fantome0{
-    background-image: url(/image/fantome0.gif);
+    background-image: url(./image/fantome0.gif);
 }
 
 .fantome1{
-    background-image: url(/image/fantome1.gif);
+    background-image: url(./image/fantome1.gif);
 }
 
 .fantome2{
-    background-image: url(/image/fantome2.gif);
+    background-image: url(./image/fantome2.gif);
 }
 
 .fantome3{
-    background-image: url(/image/fantome3.gif);
+    background-image: url(./image/fantome3.gif);
 }
 
 .score{
@@ -111,5 +111,5 @@ body{
 
 @font-face {
     font-family: "pacman";
-    src: url(/crackman.ttf);
+    src: url(./crackman.ttf);
 }
